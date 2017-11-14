@@ -10,6 +10,7 @@ public class movement : MonoBehaviour {
 	public GameObject obj;
 	public Save save;
 	public GameObject levelSelect;
+	public GameObject pauseMenu;
 	bool four;
 	bool two;
 
@@ -20,6 +21,7 @@ public class movement : MonoBehaviour {
 		obj = GameObject.Find(this.obj.name);
 		win.SetActive (false);
 		levelSelect.SetActive (false);
+		pauseMenu.SetActive (false);
 	}
 
 	// Update is called once per frame
@@ -31,7 +33,20 @@ public class movement : MonoBehaviour {
 			win.SetActive (true);
 			levelSelect.SetActive (true);
 		}
+		pausemenu ();
 	}
+
+	void pausemenu(){
+		if(Input.GetKeyDown(KeyCode.Escape))
+			pauseMenu.SetActive (true);
+			
+	}
+
+	public void resume(){
+		pauseMenu.SetActive (false);
+		Debug.Log ("resume clicked");
+	}
+
 
 	void rotateObject(){
 		switch (obj.name){
